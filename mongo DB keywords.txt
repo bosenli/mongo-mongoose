@@ -1,0 +1,34 @@
+create new database: user db_name
+show all dbs - show dbs:
+create user collections: db.users.insertOne({ name: "MI", age: 56 , status: "active"} )
+collection is grouping of a mongo db documents
+insertMany([ {  }, {  },...] )
+
+find everything inside database : db.users.find( { } )
+
+find specific user: db.user.find( {name: "miguel" })
+
+
+Projection allows you to specify or restrict fields to return.
+_id is the only field which you need to explicitly exclude in the projection. For all other fields you just need to state the inclusion. Example below:
+https://www.mongodb.com/community/forums/t/projection-does-not-allow-exclusion-inclusion-together/31756/2
+
+only look for name(inclusion, 0 is exclusion)  and age(inclusion) with age 28: db.users.find( { age: 28 }, { name: 1, age: 1 } )
+
+greater than value: db.users.find ( { age: { $gt: 25 } } )
+
+Less then the value: db.users.find( { $or: [ { status: "pending" }, { age: { $lt: 25} } ] } )
+
+db.users.updateOne( { name: "Benny" }, { $set: { name: "Ben", age: 29 }, $currentDate: { lastModified: true } } )
+
+ 
+
+ 
+
+db.users.replaceOne( { name: "Ben" }, { name: "Benny", age: 39, status: "active" } )
+
+db.users.deleteOne( { name: "Joey" } )
+
+db.users.deleteMany( { status: "pending" } )
+
+db.users.deleteMany({})

@@ -1,0 +1,20 @@
+npm init -y
+
+npm install mongoose
+
+mkdir db models seed (for mac) 
+ni db, models, seed (for windows)
+
+touch db/index.js models/users.js seed/users.js
+
+
+inside index.js
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://127.0.0.1:27017/usersDatabase', {useUnifiedTopology: true, userNewUrlParser:true}).then(()=>{ 
+	console.log("successful connected")
+}).catch(e=>{
+	console.log("error")
+})
+
+const db = mongooses.connection
+module.exports = db
